@@ -11,6 +11,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { TodoContainerComponent } from './todo-container/todo-container.component';
 import { FormsModule }   from '@angular/forms';
+import { CounDownComponent } from './components/coun-down/coun-down.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { FormsModule }   from '@angular/forms';
     TodoComponent,
     NewTodoComponent,
     TodoContainerComponent,
+    CounDownComponent,
   ],
   imports: [
     BrowserModule,

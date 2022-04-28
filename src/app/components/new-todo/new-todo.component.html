@@ -28,7 +28,8 @@
         <mat-label>Choose a date</mat-label>
         <input
             required="true"
-            ngModel="date"
+            ngModel
+            name="date"
             matInput
             [matDatepicker]="picker"
             [min]="minDate"

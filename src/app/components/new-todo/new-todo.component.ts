@@ -19,8 +19,7 @@ export class NewTodoComponent implements OnInit {
 
   constructor(public diaglog:MatDialog,private todoService:TodoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public onNewTodoSubmit():void{
     //create the new todo object
