@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { ITodo } from 'src/app/models/todo.interface';
+import {MatDialog} from '@angular/material/dialog';
+import { TodoService } from 'src/app/services/todo.service';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-new-todo',
@@ -10,13 +14,30 @@ export class NewTodoComponent implements OnInit {
 
   @ViewChild("f") form: NgForm;
 
-  constructor() { }
+  public minDate: Date = new Date();
+
+
+  constructor(public diaglog:MatDialog,private todoService:TodoService) { }
 
   ngOnInit(): void {
   }
 
   public onNewTodoSubmit():void{
-    console.log("On submit")
-    console.log(this.form);
+    //create the new todo object
+    //send object to service
+    if(this.form.valid){
+      const formValues=this.form.form.value;
+      const newtodo:ITodo={
+        id: uuidv4(),
+        title: formValues.title,
+        description: formValues.description,
+        endDate: formValues.date,
+        isArchived: formValues.isArchived,
+        isCompleted:false,
+        selected:false
+      }
+      this.todoService.addNewTodo(newtodo)
+      this.diaglog.closeAll();
+    }
   }
 }
